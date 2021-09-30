@@ -75,4 +75,4 @@ def test_item_does_not_exist(test_database):
     with pytest.raises(Exception) as v:
         cart.add_item("Strawberries", 1)
 
-    assert str(v.value) == "This item does not exist!"
+    assert str(v.value) == "This item does not exist!" # Task 5 complete

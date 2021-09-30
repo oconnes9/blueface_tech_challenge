@@ -1,3 +1,12 @@
+# Notes about my solution
+- I have created a database with sqlAlchemy for testing the database queries which I added. This is in app.py.
+- I added insert_data.py which inserts test data into the test database.
+- I have added a conftest with a fixture for a test database.
+- I have created a database model for product so that product objects can be stored in the database. 
+- I have added a check to ensure that the item exists in the database before it can be added to the cart.
+- I have completed all points below, however I was unsure about the first point. Maybe I am missing something obvious but I believe it should print the items in the order they were added already?
+- If you have any questions just let me know!
+
 # Shopping cart
 
 It is a partial implementation of a shopping till system, which you might find at a supermarket.

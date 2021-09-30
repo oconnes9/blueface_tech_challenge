@@ -12,7 +12,7 @@ class ShoppingCart(ShoppingCart):
 
     def add_item(self, product_code: str, quantity: int):
         if product_code not in self._items:
-            if Product.query.get(product_code):
+            if Product.query.get(product_code):  # Ensure that the product being added to the cart actually exists in the database (Task 6)
                 self._items[product_code] = quantity
             else:
                 raise Exception("This item does not exist!")
@@ -24,7 +24,7 @@ class ShoppingCart(ShoppingCart):
         lines = []
         total = 0
 
-        for item in self._items.items():
+        for item in self._items.items(): # Maybe I have misunderstood something but I think the receipt already prints in the order that items were added (Task 1)
             price = self._get_product_price(item[0], currency) * item[1]
             total += price
 
@@ -32,14 +32,14 @@ class ShoppingCart(ShoppingCart):
 
             lines.append(item[0] + " - " + str(item[1]) + ' - ' + price_string)
 
-        lines.append("Total - " + "€%.2f" % total)
+        lines.append("Total - " + "€%.2f" % total) # Task 2 complete
 
         return lines
 
     def _get_product_price(self, product_code: str, currency: str) -> float:
-        product = Product.query.get(product_code)
+        product = Product.query.get(product_code) # Task 3 complete
         price = product.price
         if not currency == "USD":
             c = CurrencyConverter()
-            price = c.convert(price, 'USD', currency)
+            price = c.convert(price, 'USD', currency) # Task 4 complete
         return price
